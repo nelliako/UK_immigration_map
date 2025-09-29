@@ -1,0 +1,19 @@
+# Python virtual environment
+venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Flask instance folder (contains local database)
+instance/
+
+# JavaScript dependencies
+node_modules/
+
+# Environment variables (secrets!)
+.env
+
+# VS Code editor settings
+.vscode/
+*.code-workspace
