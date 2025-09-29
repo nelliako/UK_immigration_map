@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}About This Project{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">About the UK Immigration Data Visualiser</h1>
+            <p class="col-md-8 fs-4">
+    This project provides an interactive map to explore UK visa statistics from 2005 to 2025. The dataset is taken from the 
+                <a href="https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables">official gov.uk page</a>. 
+                You can <a href="https://assets.publishing.service.gov.uk/media/689efda51fedc616bb133a38/entry-clearance-visa-outcomes-datasets-jun-2025.xlsx">download the dataset here</a>.
+            </p>
+            <hr class="my-4">
+            <p>
+                Simply go to the Immigration Map page, select a year, quarter, and application outcome (issued, refused, withdrawn) from the dropdown menus, then click on a country you would like to explore to see a detailed breakdown of visa types in the pie chart.
+            </p>
+          
+        </div>
+    </div>
+</div>
+{% endblock %}

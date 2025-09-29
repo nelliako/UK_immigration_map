@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}Immigration Map{% endblock %}
+
+{% block content %}
+<style>
+
+    #chartdiv {
+      width: 100%;
+      height: 600px;
+    }
+    .controls {
+      padding: 10px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .controls label {
+      margin-right: 10px;
+    }
+
+    #map-legend {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);        z-index: 1000;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    .legend-color-box {
+      width: 20px;        
+      height: 20px;
+      margin-right: 8px;
+      border: 1px solid #ccc;
+    }
+
+</style>
+
+<div class="controls">
+    <label for="year-select">Year:</label>
+    <select id="year-select" class="form-select-sm">
+      <option value="">--Select Year--</option>
+    </select>
+    <label for="quarter-select">Quarter:</label>
+    <select id="quarter-select" class="form-select-sm">
+      <option value="">--Select Quarter--</option>
+      <option value="Q1">Q1</option>
+      <option value="Q2">Q2</option>
+      <option value="Q3">Q3</option>
+      <option value="Q4">Q4</option>
+      <option value="Total">Total for the year</option>
+    </select>
+    <label for="status-select">Application outcome:</label>
+    <select id="status-select" class="form-select-sm">
+      <option value="Issued">Issued</option>
+      <option value="Refused">Refused</option>
+      <option value="Withdrawn">Withdrawn</option>
+    </select>
+</div>
+<div class="visa-filters ms-3">
+    <label class="me-2">Filter Visa Types:</label>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input visa-type-filter" type="checkbox" id="exclude-work" value="Work" checked>
+        <label class="form-check-label" for="exclude-work">Work</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input visa-type-filter" type="checkbox" id="exclude-study" value="Study" checked>
+        <label class="form-check-label" for="exclude-study">Study</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input visa-type-filter" type="checkbox" id="exclude-visit" value="Visitor" checked>
+        <label class="form-check-label" for="exclude-visit">Visitor</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input visa-type-filter" type="checkbox" id="exclude-family" value="Family" checked>
+        <label class="form-check-label" for="exclude-family">Family</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input visa-type-filter" type="checkbox" id="exclude-other" value="Other" checked>
+        <label class="form-check-label" for="exclude-other">Other</label>
+    </div>
+</div>
+    
+
+
+
+
+<div id="chartdiv"></div>
+<div id="map-legend"></div> 
+
+<div id="piechart-container" style="
+    width: 450px;
+    height: 450px;
+    position: absolute;
+    top: 150px; /* Adjusted position slightly */
+    right: 20px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
+    padding: 10px;
+    display: none;
+    z-index: 1000;
+    overflow: hidden;
+">
+    <span id="close-piechart-btn" style="
+        position: absolute; 
+        top: 8px; 
+        right: 15px; 
+        font-size: 24px; 
+        font-weight: bold; 
+        color: #888;
+        cursor: pointer;
+        line-height: 1;
+        z-index: 10;
+    ">&times;</span>
+
+    <div id="piechart-div" style="width: 100%; height: 380px;"></div>
+</div>
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
