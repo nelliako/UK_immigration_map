@@ -1,6 +1,6 @@
 # UK Immigration Interactive World Map
 
-## **Introduction: Project Vision and Core Technologies**
+## **Introduction: Project Overview and Core Technologies**
 
 This project is a full-stack web application designed to transform UK government statistical data presented as a csv into an interactive geospatial visualisation.
 
