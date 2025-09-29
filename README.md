@@ -19,7 +19,7 @@ At a high level, the application visualises UK visa application statistics from 
 
 The following links provide access to the live deployment and a visual demonstration of its core interactive features.
 
-**Live Application:** [Link to Deployed Application]
+**Live Application:** [Demo](https://e48b3fd1-a2f7-466c-b701-59612fa31e58-00-2eeg2e9zv9n8f.riker.replit.dev/) *(click on "Demo" to see)*
 
 ---
 
